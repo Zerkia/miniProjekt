@@ -2,8 +2,9 @@ package miniprojekt.domain.models;
 
 public class User {
 
-    String username;
-    String password;
+    private String username;
+    private String password;
+    private int ID;
 
     public User(String username, String password) {
         this.username = username;
@@ -25,6 +26,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getID() {return ID; }
+
+    public void setID(int ID) { this.ID = ID; }
 
     @Override
     public String toString() {
