@@ -1,5 +1,7 @@
 package miniprojekt.web;
 
+import miniprojekt.domain.MiniProjektException;
+import miniprojekt.repositories.UserRepositoryImplemented;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,12 @@ import miniprojekt.domain.services.UserService;
 import miniprojekt.repositories.UserRepository;
 
 @Controller
-public class myController {
+public class MyController {
+    private UserService userService = new UserService(new UserRepositoryImplemented());
+
+    private UserRepository repo;
+    public MyController() { repo = new UserRepositoryImplemented(); }
+
 
     @GetMapping("/")
     public String index() { return "index"; }
@@ -20,8 +27,19 @@ public class myController {
     public String register() { return "register"; }
 
     @PostMapping("/createUser")
-    public String createUser() {
-        return "";
+    public String createUser(WebRequest request) throws MiniProjektException {
+        String username = request.getParameter("username");
+        String password1 = request.getParameter("password");
+        String password2 = request.getParameter("password2");
+
+        if(password1.equals(password2)){
+            User user = userService.createUser(username, password1);
+            request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
+            return "redirect:/login";
+        }
+        else{
+            throw new MiniProjektException("wrong");
+        }
     }
 
 
