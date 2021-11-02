@@ -12,13 +12,11 @@ import miniprojekt.domain.models.User;
 import miniprojekt.domain.services.UserService;
 import miniprojekt.repositories.UserRepository;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class MyController {
     private UserService userService = new UserService(new UserRepositoryImplemented());
-
-    private UserRepository repo;
-    public MyController() { repo = new UserRepositoryImplemented(); }
-
 
     @GetMapping("/")
     public String index() { return "index"; }
@@ -42,11 +40,9 @@ public class MyController {
         }
     }
 
-
-
     @GetMapping("/myPage")
     public String myPageUser(Model model, User user){
-        model.addAttribute("wishlist", repo.fetchWishList(user));
+        model.addAttribute("wishlist", userService.fetchWishList(user));
         return "myPage";
     }
 
@@ -65,4 +61,5 @@ public class MyController {
 
         return "redirect:/myPage";
     }
+
 }
