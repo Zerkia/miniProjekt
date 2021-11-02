@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="style.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>you did it!</h1>
+    <table id="customers">
+        <tr>
+            <th style="width: 75%">Item</th>
+            <th style="width: 25%">Amount</th>
+        </tr>
+        <tr th:each="wishlist : ${wishlist}">
+            <td th:text="${wishlist.itemName}"></td>
+            <td th:text="${wishlist.itemQuantity}"></td>
+        </tr>
+    </table>
 </body>
 </html>
