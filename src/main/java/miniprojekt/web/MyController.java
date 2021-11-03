@@ -12,6 +12,8 @@ import org.springframework.web.context.request.WebRequest;
 import miniprojekt.domain.models.User;
 import miniprojekt.domain.services.UserService;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class MyController {
     private UserService userService = new UserService(new UserRepositoryImplemented());
@@ -70,7 +72,14 @@ public class MyController {
 
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
 
+
         return "redirect:myPage";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 
 

@@ -6,8 +6,14 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>you did it!</h1>
-    <h3><a href="/addItem">Add an item to your wishlist!</a></h3>
+    <div id="center">
+        <h4><a href="/addItem">Add an item to your wishlist!</a></h4>
+        <form action="/logout">
+            <button type="submit" name="logout">Log out</button>
+        </form>
+        <br><br>
+    </div>
+
     <table id="customers">
         <tr>
             <th style="width: 65%">Item</th>
@@ -17,7 +23,7 @@
         <tr th:each="wishlist : ${wishlist}">
             <td th:text="${wishlist.itemName}"></td>
             <td th:text="${wishlist.itemQuantity}"></td>
-            <td><center><a href="/deleteItem"><img th:text="${wishlist.wishlistID}" class="icon" src="trash.png" alt="delete item"></a></center></td>
+            <td><center><a href="/deleteItem"><img class="icon" src="trash.png" alt="delete item"></a></center></td>
         </tr>
     </table>
 </body>
