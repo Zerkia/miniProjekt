@@ -54,7 +54,7 @@ public class MyController {
     public String myPageUser(Model model, WebRequest request){
         User user = (User) request.getAttribute("user",1);
         // = Integer.parseInt(request.getParameter("userID"));
-        model.addAttribute("wishlist", userService.fetchWishList(user));
+        model.addAttribute("wishlists", userService.fetchWishList(user));
         return "myPage";
     }
 
