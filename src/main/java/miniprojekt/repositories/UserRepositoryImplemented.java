@@ -55,8 +55,9 @@ public class UserRepositoryImplemented implements UserRepository {
         }
     }
 
-    public List<Wishlist> fetchWishList(int userID) {
+    public List<Wishlist> fetchWishList(User user) {
         List<Wishlist> wishlist = new ArrayList<>();
+        int userID = user.getID();
 
         try{
             String sqlStr = "SELECT * FROM wishlists WHERE userID = ?";
@@ -73,6 +74,7 @@ public class UserRepositoryImplemented implements UserRepository {
                 );
                 wishlist.add(list);
             }
+            //return wishlist;
         } catch (SQLException wlErr) {
             System.out.println("Something went wrong");
             System.out.println(wlErr.getMessage());

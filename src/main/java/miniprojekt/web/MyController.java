@@ -39,8 +39,9 @@ public class MyController {
 
     @GetMapping("/myPage")
     public String myPageUser(Model model, WebRequest request){
-        int userID = Integer.parseInt(request.getParameter("userID"));
-        model.addAttribute("wishlist", userService.fetchWishList(userID));
+        User user = (User) request.getAttribute("user",1);
+        // = Integer.parseInt(request.getParameter("userID"));
+        model.addAttribute("wishlist", userService.fetchWishList(user));
         return "myPage";
     }
 
@@ -54,6 +55,7 @@ public class MyController {
         String password = request.getParameter("password");
 
         User user = userService.login(username, password);
+
 
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
 

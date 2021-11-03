@@ -8,5 +8,5 @@ import java.util.List;
 public interface UserRepository {
     public User createUser(User user) throws MiniProjektException;
     public User login(String username, String password) throws MiniProjektException;
-    public List<Wishlist> fetchWishList(int i);
+    public List<Wishlist> fetchWishList(User user);
 }

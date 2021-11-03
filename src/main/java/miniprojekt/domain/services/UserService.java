@@ -24,7 +24,7 @@ public class UserService {
         return userRepository.createUser(user);
     }
 
-    public List<Wishlist> fetchWishList(int i) {
-        return userRepository.fetchWishList(i);
+    public List<Wishlist> fetchWishList(User user) {
+        return userRepository.fetchWishList(user);
     }
 }
