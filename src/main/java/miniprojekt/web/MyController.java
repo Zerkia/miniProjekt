@@ -10,9 +10,6 @@ import org.springframework.web.context.request.WebRequest;
 
 import miniprojekt.domain.models.User;
 import miniprojekt.domain.services.UserService;
-import miniprojekt.repositories.UserRepository;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class MyController {
@@ -41,8 +38,9 @@ public class MyController {
     }
 
     @GetMapping("/myPage")
-    public String myPageUser(Model model, User user){
-        model.addAttribute("wishlist", userService.fetchWishList(user));
+    public String myPageUser(Model model, WebRequest request){
+        int userID = Integer.parseInt(request.getParameter("userID"));
+        model.addAttribute("wishlist", userService.fetchWishList(userID));
         return "myPage";
     }
 

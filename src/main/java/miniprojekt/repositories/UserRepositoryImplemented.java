@@ -3,6 +3,8 @@ package miniprojekt.repositories;
 import miniprojekt.domain.models.User;
 import miniprojekt.domain.MiniProjektException;
 import miniprojekt.domain.models.Wishlist;
+import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,14 +55,15 @@ public class UserRepositoryImplemented implements UserRepository {
         }
     }
 
-    public List<Wishlist> fetchWishList(User user) {
+    public List<Wishlist> fetchWishList(int userID) {
         List<Wishlist> wishlist = new ArrayList<>();
 
         try{
             String sqlStr = "SELECT * FROM wishlists WHERE userID = ?";
             Connection conn = DBManager.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlStr);
-            ps.setInt(1, user.getID());
+
+            ps.setInt(1,  userID);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {
