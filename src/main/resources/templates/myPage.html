@@ -7,14 +7,17 @@
 </head>
 <body>
     <h1>you did it!</h1>
+    <h3><a href="/addItem">Add an item to your wishlist!</a></h3>
     <table id="customers">
         <tr>
-            <th style="width: 75%">Item</th>
+            <th style="width: 65%">Item</th>
             <th style="width: 25%">Amount</th>
+            <th style="width: 10%"></th>
         </tr>
         <tr th:each="wishlist : ${wishlist}">
             <td th:text="${wishlist.itemName}"></td>
             <td th:text="${wishlist.itemQuantity}"></td>
+            <td><center><a href="/deleteItem"><img th:text="${wishlist.wishlistID}" class="icon" src="trash.png" alt="delete item"></a></center></td>
         </tr>
     </table>
 </body>

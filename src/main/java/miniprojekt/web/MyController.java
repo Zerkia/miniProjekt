@@ -1,6 +1,7 @@
 package miniprojekt.web;
 
 import miniprojekt.domain.MiniProjektException;
+import miniprojekt.domain.models.Wishlist;
 import miniprojekt.repositories.UserRepositoryImplemented;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,16 @@ public class MyController {
         }
     }
 
+    @GetMapping("/addItem")
+    public String addItem() { return "addItem"; }
+
+    @PostMapping("/addItemUser")
+    public String addItemUser(String itemName, int itemQuantity, WebRequest request) throws MiniProjektException {
+        User user = (User) request.getAttribute("user",1);
+        userService.addItem(itemName, itemQuantity, user);
+        return "redirect:myPage";
+    }
+
     @GetMapping("/myPage")
     public String myPageUser(Model model, WebRequest request){
         User user = (User) request.getAttribute("user",1);
@@ -59,7 +70,9 @@ public class MyController {
 
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
 
-        return "redirect:/myPage";
+        return "redirect:myPage";
     }
+
+
 
 }

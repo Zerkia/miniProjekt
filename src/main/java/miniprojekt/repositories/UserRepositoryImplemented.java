@@ -21,7 +21,6 @@ public class UserRepositoryImplemented implements UserRepository {
             String sqlStr = "INSERT INTO users(username, password) VALUES (?, ?)";
             Connection conn = DBManager.getConnection();
             PreparedStatement ps;
-            ResultSet rs;
             ps = conn.prepareStatement(sqlStr);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
@@ -29,6 +28,7 @@ public class UserRepositoryImplemented implements UserRepository {
 
             return user;
         } catch (SQLException regErr) {
+            System.out.println("Error in creating user");
             throw new MiniProjektException(regErr.getMessage());
         }
     }
@@ -51,6 +51,7 @@ public class UserRepositoryImplemented implements UserRepository {
                 throw new MiniProjektException("Could not figure out ID");
             }
         } catch (SQLException loginErr) {
+            System.out.println("Error in logging in");
             throw new MiniProjektException(loginErr.getMessage());
         }
     }
@@ -80,6 +81,31 @@ public class UserRepositoryImplemented implements UserRepository {
             System.out.println(wlErr.getMessage());
         }
         return wishlist;
+    }
+
+    public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException {
+        try {
+            int userID = user.getID();
+            String sqlStr = "INSERT INTO wishlists(itemName, itemQuantity, userID) VALUES (?, ?, ?);";
+            Connection conn = DBManager.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlStr);
+            ps.setString(1, itemName);
+            ps.setInt(2, itemQuantity);
+            ps.setInt(3, userID);
+            ps.executeUpdate();
+
+            return new Wishlist(itemName, itemQuantity);
+
+        } catch (SQLException itemErr) {
+            System.out.println("Something went wrong with making your wish");
+            throw new MiniProjektException(itemErr.getMessage());
+        }
+
+    }
+
+    public Wishlist deleteItem(Wishlist wishlist) throws MiniProjektException {
+        String sqlStr = "DELETE * FROM wishlists WHERE wishlistID = ?";
+
     }
 
 
