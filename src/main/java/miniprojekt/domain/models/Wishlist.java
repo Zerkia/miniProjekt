@@ -4,6 +4,7 @@ public class Wishlist {
 
     private String itemName;
     private int itemQuantity;
+    private int wishlistID;
 
 
     public Wishlist(){}
@@ -27,6 +28,14 @@ public class Wishlist {
 
     public void setItemQuantity(int itemQuantity) {
         this.itemQuantity = itemQuantity;
+    }
+
+    public int getWishlistID() {
+        return wishlistID;
+    }
+
+    public void setWishlistID(int wishlistID) {
+        this.wishlistID = wishlistID;
     }
 
     @Override

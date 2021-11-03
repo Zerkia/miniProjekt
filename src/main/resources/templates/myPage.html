@@ -24,7 +24,13 @@
             <tr th:each="wishlist : ${wishlists}">
                 <td th:text="${wishlist.itemName}"></td>
                 <td th:text="${wishlist.itemQuantity}"></td>
-                <td><center><a href="/deleteItem"><img class="icon" src="trash.png" alt="delete item"></a></center></td>
+                <td>
+                    <center>
+                        <a th:text="${wishlist.wishlistID}">
+                            <img class="icon" src="trash.png" alt="delete item">
+                        </a>
+                    </center>
+                </td>
             </tr>
         </table>
 </body>
