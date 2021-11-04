@@ -1,7 +1,6 @@
 package miniprojekt.web;
 
 import miniprojekt.domain.MiniProjektException;
-import miniprojekt.domain.models.Wishlist;
 import miniprojekt.repositories.UserRepositoryImplemented;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,8 +60,16 @@ public class MyController {
     @GetMapping("/myPage")
     public String myPageUser(Model model, WebRequest request){
         User user = (User) request.getAttribute("user",1);
-        // = Integer.parseInt(request.getParameter("userID"));
-        model.addAttribute("wishlists", userService.fetchWishList(user));
+        //int userID = Integer.parseInt(request.getParameter("userID"));
+        String userID = request.getParameter("userID");
+
+
+        assert user != null;
+        if(user.getID() == 1){
+            model.addAttribute("wishlists", userService.fetchAllWishlists());
+        } else {
+            model.addAttribute("wishlists", userService.fetchWishlist(user));
+        }
         return "myPage";
     }
 

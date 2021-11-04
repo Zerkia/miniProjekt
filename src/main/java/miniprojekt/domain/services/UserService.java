@@ -24,9 +24,11 @@ public class UserService {
         return userRepository.createUser(user);
     }
 
-    public List<Wishlist> fetchWishList(User user) {
-        return userRepository.fetchWishList(user);
+    public List<Wishlist> fetchWishlist(User user) {
+        return userRepository.fetchWishlist(user);
     }
+
+    public List<Wishlist> fetchAllWishlists() { return userRepository.fetchAllWishlists(); }
 
     public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException {
         return userRepository.addItem(itemName, itemQuantity, user);

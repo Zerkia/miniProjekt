@@ -7,8 +7,9 @@
 </head>
 <body>
     <div id="center">
-
+        <!-- Somehow remove this h4 if you're logged in as admin? -->
         <h4><a href="/addItem">Add an item to your wishlist!</a></h4>
+
         <form action="/logout">
             <button type="submit" name="logout">Log out</button>
         </form>
@@ -16,11 +17,20 @@
     </div>
 
         <table id="customers">
+            <!--
+            Somehow add an extra th in case of userID being 1,
+            showing all listed items userID's to see who added what?
+            -->
             <tr>
                 <th style="width: 65%">Item</th>
                 <th style="width: 25%">Amount</th>
                 <th style="width: 10%"></th>
             </tr>
+
+            <!--
+            Do the same here in case of userID logged in being 1 aka the admin.
+            Make an extra <td> block showing userID's (th:text="${wishlist.userID}")
+            -->
             <tr th:each="wishlist : ${wishlists}">
                 <td th:text="${wishlist.itemName}"></td>
                 <td th:text="${wishlist.itemQuantity}"></td>

@@ -20,22 +20,6 @@ public class Wishlist {
         this.wishlistID = wishlistID;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    public void setItemQuantity(int itemQuantity) {
-        this.itemQuantity = itemQuantity;
-    }
-
     public int getWishlistID() {
         return wishlistID;
     }
@@ -43,6 +27,14 @@ public class Wishlist {
     public void setWishlistID(int wishlistID) {
         this.wishlistID = wishlistID;
     }
+
+    public String getItemName() { return itemName; }
+
+    public void setItemName(String itemName) { this.itemName = itemName; }
+
+    public int getItemQuantity() { return itemQuantity; }
+
+    public void setItemQuantity(int itemQuantity) { this.itemQuantity = itemQuantity; }
 
     @Override
     public String toString() {

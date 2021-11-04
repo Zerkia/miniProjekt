@@ -56,7 +56,7 @@ public class UserRepositoryImplemented implements UserRepository {
         }
     }
 
-    public List<Wishlist> fetchWishList(User user) {
+    public List<Wishlist> fetchWishlist(User user) {
         List<Wishlist> wishlist = new ArrayList<>();
         int userID = user.getID();
 
@@ -74,6 +74,32 @@ public class UserRepositoryImplemented implements UserRepository {
                     rs.getString("itemName"),
                     rs.getInt("itemQuantity"),
                     rs.getInt("wishlistID")
+                );
+                wishlist.add(list);
+            }
+            //return wishlist;
+        } catch (SQLException wlErr) {
+            System.out.println("Something went wrong");
+            System.out.println(wlErr.getMessage());
+        }
+        return wishlist;
+    }
+
+    public List<Wishlist> fetchAllWishlists() {
+        List<Wishlist> wishlist = new ArrayList<>();
+
+        try{
+            //Make if statement to fetch all if admin? (either specific name/id or userroles for multiple admins)
+            String sqlStr = "SELECT * FROM wishlists";
+            Connection conn = DBManager.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlStr);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Wishlist list = new Wishlist(
+                        rs.getString("itemName"),
+                        rs.getInt("itemQuantity"),
+                        rs.getInt("wishlistID")
                 );
                 wishlist.add(list);
             }
