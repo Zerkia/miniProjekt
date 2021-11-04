@@ -61,6 +61,7 @@ public class UserRepositoryImplemented implements UserRepository {
         int userID = user.getID();
 
         try{
+            //Make if statement to fetch all if admin? (either specific name/id or userroles for multiple admins)
             String sqlStr = "SELECT * FROM wishlists WHERE userID = ?";
             Connection conn = DBManager.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlStr);
@@ -71,7 +72,8 @@ public class UserRepositoryImplemented implements UserRepository {
             while(rs.next()) {
                 Wishlist list = new Wishlist(
                     rs.getString("itemName"),
-                    rs.getInt("itemQuantity")
+                    rs.getInt("itemQuantity"),
+                    rs.getInt("wishlistID")
                 );
                 wishlist.add(list);
             }
@@ -103,10 +105,20 @@ public class UserRepositoryImplemented implements UserRepository {
 
     }
 
-    public Wishlist deleteItem(Wishlist wishlist) throws MiniProjektException {
-        String sqlStr = "DELETE * FROM wishlists WHERE wishlistID = ?";
+    public String deleteItem(int wishlistID) {
+        try{
+            String sqlStr = "DELETE wishlists.* FROM wishlists WHERE wishlistID = ?";
+            Connection conn = DBManager.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlStr);
+            ps.setInt(1, wishlistID);
+            ps.executeUpdate();
 
+            return "Success!";
+        } catch (SQLException delErr) {
+            System.out.println("Couldn't delete item, Error");
+            System.out.println(delErr.getMessage());
+        }
+        return "redirect:/myPage";
     }
-
 
 }
