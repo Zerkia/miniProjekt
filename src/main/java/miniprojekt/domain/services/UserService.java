@@ -31,4 +31,6 @@ public class UserService {
     public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException {
         return userRepository.addItem(itemName, itemQuantity, user);
     }
+
+    public String deleteItem(int wishlistID){ return userRepository.deleteItem(wishlistID); }
 }

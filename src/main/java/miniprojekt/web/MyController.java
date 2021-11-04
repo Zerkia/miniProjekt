@@ -40,24 +40,6 @@ public class MyController {
         }
     }
 
-    @GetMapping("/addItem")
-    public String addItem() { return "addItem"; }
-
-    @PostMapping("/addItemUser")
-    public String addItemUser(String itemName, int itemQuantity, WebRequest request) throws MiniProjektException {
-        User user = (User) request.getAttribute("user",1);
-        userService.addItem(itemName, itemQuantity, user);
-        return "redirect:myPage";
-    }
-
-    @GetMapping("/myPage")
-    public String myPageUser(Model model, WebRequest request){
-        User user = (User) request.getAttribute("user",1);
-        // = Integer.parseInt(request.getParameter("userID"));
-        model.addAttribute("wishlists", userService.fetchWishList(user));
-        return "myPage";
-    }
-
     @GetMapping("/login")
     public String login(){ return "login"; }
 
@@ -73,6 +55,30 @@ public class MyController {
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
 
 
+        return "redirect:myPage";
+    }
+
+    @GetMapping("/myPage")
+    public String myPageUser(Model model, WebRequest request){
+        User user = (User) request.getAttribute("user",1);
+        // = Integer.parseInt(request.getParameter("userID"));
+        model.addAttribute("wishlists", userService.fetchWishList(user));
+        return "myPage";
+    }
+
+    @GetMapping("/addItem")
+    public String addItem() { return "addItem"; }
+
+    @PostMapping("/addItemUser")
+    public String addItemUser(String itemName, int itemQuantity, WebRequest request) throws MiniProjektException {
+        User user = (User) request.getAttribute("user",1);
+        userService.addItem(itemName, itemQuantity, user);
+        return "redirect:myPage";
+    }
+
+    @GetMapping("/deleteItem")
+    public String deleteItem(int wishlistID) {
+        userService.deleteItem(wishlistID);
         return "redirect:myPage";
     }
 

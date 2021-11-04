@@ -14,6 +14,12 @@ public class Wishlist {
         this.itemQuantity = itemQuantity;
     }
 
+    public Wishlist(String itemName, int itemQuantity, int wishlistID){
+        this.itemName = itemName;
+        this.itemQuantity = itemQuantity;
+        this.wishlistID = wishlistID;
+    }
+
     public String getItemName() {
         return itemName;
     }

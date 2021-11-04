@@ -26,7 +26,7 @@
                 <td th:text="${wishlist.itemQuantity}"></td>
                 <td>
                     <center>
-                        <a th:text="${wishlist.wishlistID}">
+                        <a th:href="@{/deleteItem(wishlistID=${wishlist.wishlistID})}">
                             <img class="icon" src="trash.png" alt="delete item">
                         </a>
                     </center>
