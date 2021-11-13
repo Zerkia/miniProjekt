@@ -100,7 +100,7 @@ class MiniProjektApplicationTests {
         List<Wishlist> wishlist = repo.fetchWishlist(user);
 
         //add item
-        repo.addItem("bukser",1,user);
+        repo.addItem("bukser",1, "https://www.google.com", user);
 
         //fetch new wishlist and assert it is larger in size than the initial list
         List<Wishlist> wishlist1 = repo.fetchWishlist(user);

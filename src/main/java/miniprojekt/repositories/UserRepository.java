@@ -10,6 +10,6 @@ public interface UserRepository {
     public User login(String username, String password) throws MiniProjektException;
     public List<Wishlist> fetchWishlist(User user);
     public List<Wishlist> fetchAllWishlists();
-    public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException;
+    public Wishlist addItem(String itemName, int itemQuantity, String itemLink, User user) throws MiniProjektException;
     public String deleteItem(int wishlistID);
 }

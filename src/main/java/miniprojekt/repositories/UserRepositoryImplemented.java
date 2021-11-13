@@ -61,7 +61,6 @@ public class UserRepositoryImplemented implements UserRepository {
         int userID = user.getID();
 
         try{
-            //Make if statement to fetch all if admin? (either specific name/id or userroles for multiple admins)
             String sqlStr = "SELECT * FROM wishlists WHERE userID = ?";
             Connection conn = DBManager.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlStr);
@@ -73,6 +72,7 @@ public class UserRepositoryImplemented implements UserRepository {
                 Wishlist list = new Wishlist(
                     rs.getString("itemName"),
                     rs.getInt("itemQuantity"),
+                    rs.getString("itemLink"),
                     rs.getInt("wishlistID")
                 );
                 wishlist.add(list);
@@ -99,6 +99,7 @@ public class UserRepositoryImplemented implements UserRepository {
                 Wishlist list = new Wishlist(
                         rs.getString("itemName"),
                         rs.getInt("itemQuantity"),
+                        rs.getString("itemLink"),
                         rs.getInt("wishlistID")
                 );
                 wishlist.add(list);
@@ -111,15 +112,16 @@ public class UserRepositoryImplemented implements UserRepository {
         return wishlist;
     }
 
-    public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException {
+    public Wishlist addItem(String itemName, int itemQuantity, String itemLink, User user) throws MiniProjektException {
         try {
             int userID = user.getID();
-            String sqlStr = "INSERT INTO wishlists(itemName, itemQuantity, userID) VALUES (?, ?, ?);";
+            String sqlStr = "INSERT INTO wishlists(itemName, itemQuantity, itemLink, userID) VALUES (?, ?, ?, ?);";
             Connection conn = DBManager.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlStr);
             ps.setString(1, itemName);
             ps.setInt(2, itemQuantity);
-            ps.setInt(3, userID);
+            ps.setString(3, itemLink);
+            ps.setInt(4, userID);
             ps.executeUpdate();
 
             return new Wishlist(itemName, itemQuantity);

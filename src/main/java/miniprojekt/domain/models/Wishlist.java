@@ -4,19 +4,18 @@ public class Wishlist {
 
     private String itemName;
     private int itemQuantity;
+    private String itemLink;
     private int wishlistID;
-
-
-    public Wishlist(){}
 
     public Wishlist(String itemName, int itemQuantity) {
         this.itemName = itemName;
         this.itemQuantity = itemQuantity;
     }
 
-    public Wishlist(String itemName, int itemQuantity, int wishlistID){
+    public Wishlist(String itemName, int itemQuantity, String itemLink, int wishlistID) {
         this.itemName = itemName;
         this.itemQuantity = itemQuantity;
+        this.itemLink = itemLink;
         this.wishlistID = wishlistID;
     }
 
@@ -35,6 +34,10 @@ public class Wishlist {
     public int getItemQuantity() { return itemQuantity; }
 
     public void setItemQuantity(int itemQuantity) { this.itemQuantity = itemQuantity; }
+
+    public String getItemLink() { return itemLink; }
+
+    public void setItemLink(String itemLink) { this.itemLink = itemLink; }
 
     @Override
     public String toString() {

@@ -60,9 +60,6 @@ public class MyController {
     @GetMapping("/myPage")
     public String myPageUser(Model model, WebRequest request){
         User user = (User) request.getAttribute("user",1);
-        //int userID = Integer.parseInt(request.getParameter("userID"));
-        String userID = request.getParameter("userID");
-
 
         assert user != null;
         if(user.getID() == 1){
@@ -77,9 +74,9 @@ public class MyController {
     public String addItem() { return "addItem"; }
 
     @PostMapping("/addItemUser")
-    public String addItemUser(String itemName, int itemQuantity, WebRequest request) throws MiniProjektException {
+    public String addItemUser(String itemName, int itemQuantity, String itemLink, WebRequest request) throws MiniProjektException {
         User user = (User) request.getAttribute("user",1);
-        userService.addItem(itemName, itemQuantity, user);
+        userService.addItem(itemName, itemQuantity, itemLink, user);
         return "redirect:myPage";
     }
 

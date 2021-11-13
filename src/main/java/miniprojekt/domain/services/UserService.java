@@ -30,8 +30,8 @@ public class UserService {
 
     public List<Wishlist> fetchAllWishlists() { return userRepository.fetchAllWishlists(); }
 
-    public Wishlist addItem(String itemName, int itemQuantity, User user) throws MiniProjektException {
-        return userRepository.addItem(itemName, itemQuantity, user);
+    public Wishlist addItem(String itemName, int itemQuantity, String itemLink, User user) throws MiniProjektException {
+        return userRepository.addItem(itemName, itemQuantity, itemLink, user);
     }
 
     public String deleteItem(int wishlistID){ return userRepository.deleteItem(wishlistID); }

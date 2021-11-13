@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<center><form action="/login" method="post">
-    <center><h1>Login</h1></center>
-    Username: <input type="text" name="username"/>
-    <br><br>
-    Password: <input type="password" name="password"/>
-    <br><br>
-    <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
-    <button name="create" type="submit">Login</button>
-</form></center>
+    <div class="background">
+        <div id="wrapper">
+            <center>
+                <form action="/login" method="post">
+                    <center>
+                        <h1>Login</h1>
+                    </center>
+                    Username: <input type="text" name="username"/>
+                    <br><br>
+                    Password: <input type="password" name="password"/>
+                    <br><br>
+                    <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
+                    <button name="create" type="submit">Login</button>
+                </form>
+            </center>
+        </div>
+    </div>
 </body>
 </html>
