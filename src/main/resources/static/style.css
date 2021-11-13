@@ -1,23 +1,7 @@
-body{
-
-}
-
-.button{
-    width: 100px;
-    height: 40px;
-    font-size: 20px;
-}
-
-.button2{
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
-}
-
-#wrapper {
-    margin: 0 auto;
-    width: 1024px;
-    position:relative;
+a{
+    color:blue;
+    text-decoration: none;
+    opacity: 0.75;
 }
 
 .background {
@@ -41,16 +25,28 @@ body{
     opacity: 0.25;
 }
 
+.button{
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.button2{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+}
+
 .center{
     text-align:center;
     display: block;
     margin: auto;
 }
 
-a{
-    color:blue;
-    text-decoration: none;
-    opacity: 0.75;
+#wrapper {
+    margin: 0 auto;
+    width: 1024px;
+    position:relative;
 }
 
 #customers {
