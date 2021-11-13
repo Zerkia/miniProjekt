@@ -7,22 +7,20 @@
 </head>
 <body>
     <div class="background">
-        <div id="wrapper">
-            <center>
-                <form action="/createUser" method="post">
-                    <center>
-                        <h1>Register</h1>
-                    </center>
-                    Username: <input type="text" name="username"/>
-                    <br><br>
-                    Password: <input type="password" name="password"/>
-                    <br><br>
-                    Confirm Password: <input type="password" name="password2"/>
-                    <br><br>
-                    <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
-                    <button name="create" type="submit">Register</button>
-                </form>
-            </center>
+        <div id="wrapper" class="center">
+            <form action="/createUser" method="post">
+                <h1>Register</h1>
+
+                Username: <input type="text" name="username"/>
+                <br><br>
+                Password: <input type="password" name="password"/>
+                <br><br>
+                Confirm Password: <input type="password" name="password2"/>
+                <br><br>
+
+                <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
+                <button name="create" type="submit">Register</button>
+            </form>
         </div>
     </div>
 </body>

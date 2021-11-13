@@ -18,12 +18,10 @@
                 -->
 
                 <!-- Somehow remove this h4 if you're logged in as admin? -->
-                <form action="/addItem">
-                    <button type="submit" name="addItem">Add New Item</button>
-                </form>
-                <br>
+                <button onclick="location.href='http://localhost:8080/addItem'" type="button" class="button2">Add New Item</button>
+                <br><br>
                 <form action="/logout">
-                    <button type="submit" name="logout">Log Out</button>
+                    <button type="submit" name="logout" class="button">Log Out</button>
                 </form>
                 <br><br>
             </div>
@@ -48,18 +46,14 @@
                     <td th:text="${wishlist.itemName}"></td>
                     <td th:text="${wishlist.itemQuantity}"></td>
                     <td>
-                        <center>
-                            <a th:href="${wishlist.itemLink}">
-                                <p>Link</p>
-                            </a>
-                        </center>
+                        <a th:href="${wishlist.itemLink}" class="center">
+                            <p>Link</p>
+                        </a>
                     </td>
                     <td>
-                        <center>
-                            <a th:href="@{/deleteItem(wishlistID=${wishlist.wishlistID})}">
-                                <img class="icon" src="trash.png" alt="delete item">
-                            </a>
-                        </center>
+                        <a th:href="@{/deleteItem(wishlistID=${wishlist.wishlistID})}">
+                            <img class="icon center" src="trash.png" alt="delete item">
+                        </a>
                     </td>
                 </tr>
             </table>

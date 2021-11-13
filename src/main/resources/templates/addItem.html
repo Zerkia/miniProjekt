@@ -7,22 +7,20 @@
 </head>
 <body>
 <div class="background">
-    <div id="wrapper">
-        <center>
-            <form action="/addItemUser" method="post">
-            <center>
-                <h1>Add a new item to your wishlist!</h1>
-            </center>
+    <div id="wrapper" class="center">
+        <form action="/addItemUser" method="post">
+            <h1>Add a new item to your wishlist!</h1>
+
             Item Name: <input type="text" name="itemName"/>
             <br><br>
             Quantity: <input type="number" name="itemQuantity"/>
             <br><br>
             Link: <input type="text" name="itemLink"/>
             <br><br>
+
             <button onclick="location.href='http://localhost:8080/myPage'" type="button">Back</button>
             <button name="create" type="submit">Add Item</button>
-            </form>
-        </center>
+        </form>
     </div>
 </div>
 </body>

@@ -7,20 +7,18 @@
 </head>
 <body>
     <div class="background">
-        <div id="wrapper">
-            <center>
-                <form action="/login" method="post">
-                    <center>
-                        <h1>Login</h1>
-                    </center>
-                    Username: <input type="text" name="username"/>
-                    <br><br>
-                    Password: <input type="password" name="password"/>
-                    <br><br>
-                    <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
-                    <button name="create" type="submit">Login</button>
-                </form>
-            </center>
+        <div id="wrapper" class="center">
+            <form action="/login" method="post">
+                <h1>Login</h1>
+
+                Username: <input type="text" name="username"/>
+                <br><br>
+                Password: <input type="password" name="password"/>
+                <br><br>
+
+                <button onclick="location.href='http://localhost:8080/'" type="button">Back</button>
+                <button name="create" type="submit">Login</button>
+            </form>
         </div>
     </div>
 </body>
