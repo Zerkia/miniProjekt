@@ -7,12 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.view.RedirectView;
+import javax.servlet.http.HttpSession;
 
 import miniprojekt.domain.models.User;
 import miniprojekt.domain.services.UserService;
-import org.springframework.web.servlet.view.RedirectView;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class MyController {
@@ -25,7 +24,7 @@ public class MyController {
     public String register() { return "register"; }
 
     @PostMapping("/createUser")
-    public String createUser(WebRequest request) throws MiniProjektException {
+    public RedirectView createUser(WebRequest request) throws MiniProjektException {
         String username = request.getParameter("username");
         String password1 = request.getParameter("password");
         String password2 = request.getParameter("password2");
@@ -33,7 +32,7 @@ public class MyController {
         if(password1.equals(password2)){
             User user = userService.createUser(username, password1);
             request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
-            return "redirect:/login";
+            return new RedirectView("login");
         }
         else{
             throw new MiniProjektException("wrong");
@@ -73,22 +72,22 @@ public class MyController {
     public String addItem() { return "addItem"; }
 
     @PostMapping("/addItemUser")
-    public String addItemUser(String itemName, int itemQuantity, String itemLink, WebRequest request) throws MiniProjektException {
+    public RedirectView addItemUser(String itemName, int itemQuantity, String itemLink, WebRequest request) throws MiniProjektException {
         User user = (User) request.getAttribute("user",1);
         userService.addItem(itemName, itemQuantity, itemLink, user);
-        return "redirect:myPage";
+        return new RedirectView("myPage");
     }
 
     @GetMapping("/deleteItem")
-    public String deleteItem(int wishlistID) {
+    public RedirectView deleteItem(int wishlistID) {
         userService.deleteItem(wishlistID);
-        return "redirect:myPage";
+        return new RedirectView("myPage");
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public RedirectView logout(HttpSession session){
         session.invalidate();
-        return "redirect:/";
+        return new RedirectView("/");
     }
 
 
