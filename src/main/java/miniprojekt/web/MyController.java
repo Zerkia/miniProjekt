@@ -10,6 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import miniprojekt.domain.models.User;
 import miniprojekt.domain.services.UserService;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,18 +44,16 @@ public class MyController {
     public String login(){ return "login"; }
 
     @PostMapping("/login")
-    public String loginUser(WebRequest request) throws MiniProjektException {
+    public RedirectView loginUser(WebRequest request) throws MiniProjektException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         User user = userService.login(username, password);
 
-
         request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
 
-
-        return "redirect:myPage";
+        return new RedirectView("myPage");
     }
 
     @GetMapping("/myPage")
