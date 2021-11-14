@@ -30,7 +30,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin'),(2,'texas','toronto'),(3,'pokemonfan42','pokemon4ever'),(4,'test','test'),(5,'cheesebugga','cheese'),(7,'test2','test2'),(8,'hej','hej'),(9,'admin2','admin');
+INSERT INTO `users` VALUES (1,'admin','admin'),(2,'texas','toronto'),(3,'pokemonfan42','pokemon4ever'),(4,'test','test'),(5,'cheesebugga','cheese'),(7,'test2','test2'),(8,'hej','hej'),(9,'admin2','admin'),(10,'ad','ad');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,11 +55,11 @@ CREATE TABLE `wishlists` (
   `userID` int NOT NULL,
   `itemName` varchar(255) NOT NULL,
   `itemQuantity` smallint NOT NULL,
+  `itemLink` varchar(1000) NOT NULL,
   PRIMARY KEY (`wishlistID`),
-  UNIQUE KEY `itemName_UNIQUE` (`itemName`),
   KEY `fkwishlistusers_idx` (`userID`),
   CONSTRAINT `fkwishlistusers` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `wishlists` (
 
 LOCK TABLES `wishlists` WRITE;
 /*!40000 ALTER TABLE `wishlists` DISABLE KEYS */;
-INSERT INTO `wishlists` VALUES (1,1,'teddy',3);
+INSERT INTO `wishlists` VALUES (1,1,'teddy',3,'https://google.com'),(2,1,'Cheese',3,'https://ebay.com'),(4,5,'Cheeseburger',420,'https://amazon.com'),(5,4,'test',4329,'https://miniclip.com');
 /*!40000 ALTER TABLE `wishlists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-02 13:15:29
+-- Dump completed on 2021-11-14 12:53:57
