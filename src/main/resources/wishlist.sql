@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `wishlist` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `wishlist`;
+USE heroku_b398123d115b26b;
 -- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: wishlist
@@ -25,12 +24,12 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `userID` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`userID`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+                         `userID` int NOT NULL AUTO_INCREMENT,
+                         `username` varchar(255) NOT NULL,
+                         `password` varchar(255) NOT NULL,
+                         PRIMARY KEY (`userID`),
+                         UNIQUE KEY `username_UNIQUE` (`username`)
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,15 +50,15 @@ DROP TABLE IF EXISTS `wishlists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wishlists` (
-  `wishlistID` int NOT NULL AUTO_INCREMENT,
-  `userID` int NOT NULL,
-  `itemName` varchar(255) NOT NULL,
-  `itemQuantity` smallint NOT NULL,
-  `itemLink` varchar(1000) NOT NULL,
-  PRIMARY KEY (`wishlistID`),
-  KEY `fkwishlistusers_idx` (`userID`),
-  CONSTRAINT `fkwishlistusers` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+                             `wishlistID` int NOT NULL AUTO_INCREMENT,
+                             `userID` int NOT NULL,
+                             `itemName` varchar(255) NOT NULL,
+                             `itemQuantity` smallint NOT NULL,
+                             `itemLink` varchar(1000) NOT NULL,
+                             PRIMARY KEY (`wishlistID`),
+                             KEY `fkwishlistusers_idx` (`userID`),
+                             CONSTRAINT `fkwishlistusers` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-14 12:53:57
+-- Dump completed on 2021-11-14 13:29:52
