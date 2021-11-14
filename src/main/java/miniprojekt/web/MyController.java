@@ -89,7 +89,4 @@ public class MyController {
         session.invalidate();
         return new RedirectView("/");
     }
-
-
-
 }
